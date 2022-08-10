@@ -35,7 +35,6 @@ module.exports = {
       library: `${packageName}`,
       libraryTarget: 'umd',
       jsonpFunction: `webpackJsonp_${packageName}`,
-    },
-    rules:[]
+    }
   }
 };
