@@ -29,7 +29,7 @@ module.exports = {
       },
     },
     output: {
-      // 把子应用打包成 umd 库格式 commonjs 浏览器，node环境
+      // 把子应用打包成 umd 库格式 commonjs 浏览器，n ode环境
       library: `${packageName}`,
       libraryTarget: 'umd',
     },

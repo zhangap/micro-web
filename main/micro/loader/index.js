@@ -47,6 +47,12 @@ export const parseHtml = async (entry, name) => {
   return [dom, allScript]
 }
 
+/**
+ * 递归获取子应用里面的script脚本
+ * @param root
+ * @param entry
+ * @returns {Promise<(string|*[])[]>}
+ */
 export const getResources = async (root, entry) => {
   const scriptUrl = [] // js 链接  src  href
   const script = [] // 写在script中的js脚本内容
@@ -96,4 +102,34 @@ export const getResources = async (root, entry) => {
   deepParse(root)
 
   return [dom, scriptUrl, script]
+}
+
+/**
+ * 第二种获取script脚本
+ * @param root
+ * @param entry
+ * @returns {Promise<void>}
+ */
+export async function getResource2(root, entry) {
+  const scripts = []
+  const scriptUrls = []
+
+  const scriptTags = root.querySelectorAll('script')
+  const linkTags = root.querySelectorAll('link')
+
+  scriptTags.forEach(item => {
+    const src = item.getAttribute('src')
+    if(!src) {
+      scripts.push(item.outerHTML)
+    } else if(src.startsWith('http')) {
+      scriptUrls.push(src)
+    }else {
+      scriptUrls.push(`http://${entry}/${src}`)
+    }
+  })
+
+  return {
+    scripts,
+    scriptUrls
+  }
 }

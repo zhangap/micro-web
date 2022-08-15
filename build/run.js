@@ -11,6 +11,7 @@ const filePath = {
 // cd 子应用的目录 npm start 启动项目
 function runChild () {
   Object.values(filePath).forEach(item => {
+    // 子进程将使用父进程的标准输入输出。stdio: "inherit"
     childProcess.spawn(`cd ${item} && npm start`, { stdio: "inherit", shell: true })
   })
 }
