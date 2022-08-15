@@ -127,6 +127,16 @@ export async function getResource2(root, entry) {
       scriptUrls.push(`http://${entry}/${src}`)
     }
   })
+  linkTags.forEach(item => {
+    const src = item.getAttribute('href')
+    if(!src) {
+      scripts.push(item.outerHTML)
+    } else if(src.startsWith('http')) {
+      scriptUrls.push(src)
+    }else {
+      scriptUrls.push(`http://${entry}/${src}`)
+    }
+  })
 
   return {
     scripts,

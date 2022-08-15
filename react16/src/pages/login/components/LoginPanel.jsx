@@ -13,8 +13,8 @@ const LoginPanel = () => {
     })
       .then(res => {
         console.log('登录成功')
-      // main.appInfo.loginState.logined()
-      // main.appInfo.routerLink.routerPush('/vue3/#/index')
+      main.appInfo.loginState.logined()
+      main.appInfo.routerLink.routerPush('/vue3/#/index')
     })
   }
 

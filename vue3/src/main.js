@@ -22,6 +22,8 @@ export async function bootstrap() {
 export async function mount(app) {
   setMain(app)
   render();
+  // 测试自定义事件的触发
+  window.custom.emit('test', 'vue3子应用发来事件')
 }
 
 export async function unmount(ctx) {
